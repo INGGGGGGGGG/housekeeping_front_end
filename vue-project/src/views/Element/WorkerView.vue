@@ -44,7 +44,7 @@
               <el-form :model="form"
                 style="display: flex; justify-content:space-between; flex-wrap: wrap; padding: 0 20px;" :rules="rules">
                 <el-form-item label="姓名" prop="name">
-                  <el-input v-model="form.name" autocomplete="off" style="width: 300px;"></el-input>
+                  <el-input v-model="form.name" autocomplete="off" style="width: 300px;" placeholder="请输入姓名"></el-input>
                 </el-form-item>
                 <el-form-item label="服务分类" prop="serviceCategory">
                   <el-select v-model="form.serviceCategory" placeholder="请选择服务类别" style="width: 250px;">
@@ -62,7 +62,8 @@
                   <el-input v-model="form.hourlyRate" autocomplete="off" style="width: 250px;" type="number"></el-input>
                 </el-form-item>
                 <el-form-item label="电话号码" prop="phoneNumber">
-                  <el-input v-model="form.phoneNumber" autocomplete="off" style="width: 300px;"></el-input>
+                  <el-input v-model="form.phoneNumber" autocomplete="off" style="width: 300px;"
+                    placeholder="请输入电话号码"></el-input>
                 </el-form-item>
                 <el-form-item label="年龄" prop="age">
                   <el-input v-model="form.age" autocomplete="off" style="width: 250px;" type="number"></el-input>
@@ -74,7 +75,8 @@
                   </el-select>
                 </el-form-item>
                 <el-form-item label="所在地区" prop="region">
-                  <el-input v-model="form.region" autocomplete="off" style="width: 300px;"></el-input>
+                  <el-input v-model="form.region" autocomplete="off" style="width: 300px;"
+                    placeholder="请输入所在地区"></el-input>
                 </el-form-item>
                 <el-form-item label="图片" prop="profilePicture">
                   <el-upload class="avatar-uploader" :show-file-list="false" :on-success="handleAvatarSuccess"

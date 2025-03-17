@@ -45,8 +45,8 @@
           <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible">
             <el-form :model="form"
               style="display: flex; justify-content:space-between; flex-wrap: wrap; padding: 0 20px;" :rules="rules">
-              <el-form-item label="姓名" prop="name">
-                <el-input v-model="form.name" autocomplete="off" style="width: 300px;"></el-input>
+              <el-form-item label="服务名称" prop="name">
+                <el-input v-model="form.name" autocomplete="off" style="width: 300px;" placeholder="请输入服务名称"></el-input>
               </el-form-item>
               <el-form-item label="状态" prop="status">
                 <el-select v-model="form.status" placeholder="请选择状态" style="width: 250px;">

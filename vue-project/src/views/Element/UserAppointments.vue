@@ -117,18 +117,45 @@ export default {
       console.log("handleCurrentChange..." + val);
       this.render({ page: val })
     },
+    // cancelOrder(id) {
+    //   console.log(id);
+    //   axios({
+    //     method: "put",
+    //     url: `http://localhost:8080/orders?id=${id}`, // 请求路径
+    //   })
+    //     .then(response => {
+    //       console.log(response.data);
+    //       this.render({ page: this.currentPage })
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // }
     cancelOrder(id) {
-      console.log(id);
-      axios({
-        method: "put",
-        url: `http://localhost:8080/orders?id=${id}`, // 请求路径
+      this.$confirm("确定要取消该预约吗？", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
       })
-        .then(response => {
-          console.log(response.data);
-          this.render({ page: this.currentPage })
+        .then(() => {
+          // 如果用户点击“确定”，发送取消预约的请求
+          axios({
+            method: "put",
+            url: `http://localhost:8080/orders?id=${id}`, // 请求路径
+          })
+            .then(response => {
+              console.log(response.data);
+              this.$message.success("预约已成功取消");
+              this.render({ page: this.currentPage }); // 刷新当前页面的数据
+            })
+            .catch(error => {
+              console.error(error);
+              this.$message.error("取消预约失败，请稍后重试");
+            });
         })
-        .catch(error => {
-          console.error(error);
+        .catch(() => {
+          // 如果用户点击“取消”，不做任何操作
+          console.log("取消操作");
         });
     }
   },
