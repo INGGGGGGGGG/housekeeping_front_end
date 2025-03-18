@@ -265,13 +265,6 @@ export default {
           console.log(response.data);
           this.$message.success("预约成功");
 
-          axios({
-            method: "post",
-            url: `http://localhost:8080/orders?staffId=${this.form.id}`, // 请求路径
-          }).then(response => {
-            console.log(response.data);
-          })
-
           this.dialogForm = {
             staffId: '',
             appointmentDate: '',

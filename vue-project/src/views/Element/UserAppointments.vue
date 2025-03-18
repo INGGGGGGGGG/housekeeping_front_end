@@ -29,6 +29,7 @@
               <span style="color: #2e3f57; margin-right: 10px;">{{ order.orderNumber }}</span>
               <span style="font-size: 14px; color: #d2d2db;">{{ order.orderTime.replace('T', ' ') }}</span>
               <span style="color: #1a8e64; margin-left: 220px;" v-if="order.status === 1">预约成功</span>
+              <span style="color: #007bff; margin-left: 220px;" v-else-if="order.status === 2">订单已完成</span>
               <span style="color: #e51218; margin-left: 220px;" v-else>已取消预约</span>
             </div>
             <div style="height: 155px; margin: 0; padding-bottom: 3px; border-bottom: 1px solid #ccc; display: flex;">
@@ -117,20 +118,6 @@ export default {
       console.log("handleCurrentChange..." + val);
       this.render({ page: val })
     },
-    // cancelOrder(id) {
-    //   console.log(id);
-    //   axios({
-    //     method: "put",
-    //     url: `http://localhost:8080/orders?id=${id}`, // 请求路径
-    //   })
-    //     .then(response => {
-    //       console.log(response.data);
-    //       this.render({ page: this.currentPage })
-    //     })
-    //     .catch(error => {
-    //       console.error(error);
-    //     });
-    // }
     cancelOrder(id) {
       this.$confirm("确定要取消该预约吗？", "提示", {
         confirmButtonText: "确定",
