@@ -35,7 +35,7 @@
 
         <el-main style="margin-right: 50px;">
           <div style="height: 40px; margin-bottom: 16px; position: relative;">
-            <el-button round style="position: absolute; left: 20px;" type="primary">AI智能推荐</el-button>
+            <!-- <el-button round style="position: absolute; left: 20px;" type="primary">AI智能推荐</el-button> -->
             <el-input v-model="input" placeholder="请输入姓名"
               style="position: absolute; width: 250px; right: 70px;"></el-input>
             <el-button icon="el-icon-search" circle style="position: absolute; right: 20px;"
@@ -76,19 +76,25 @@
 
           <div style="background-color: #fff !important; height: 50px;">
             <el-pagination background layout="total, prev, pager, next" :total="total" :current-page.sync="currentPage"
-              @current-change="handleCurrentChange" style="position: absolute; right: 20px; margin-top: 20px;">
+              @current-change="handleCurrentChange" style="position: absolute; right: 150px; margin-top: 20px;">
             </el-pagination>
           </div>
         </el-main>
       </el-container>
     </el-container>
+
+    <chat-bot />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ChatBot from '../../components/ChatBot.vue';
 
 export default {
+  components: {
+    ChatBot
+  },
   data() {
     return {
       total: 15,

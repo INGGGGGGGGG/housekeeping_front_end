@@ -53,9 +53,15 @@
                     </el-option>
                   </el-select>
                 </el-form-item>
-                <el-form-item label="个人简介" prop="introduction">
+                <el-form-item prop="introduction">
+                  <template #label>
+                    <span>个人简介</span>
+                    <span style="color: #999; font-size: 12px; margin-left: 8px;">
+                      {{ form.introduction ? form.introduction.length : 0 }}/300
+                    </span>
+                  </template>
                   <el-input type="textarea" placeholder="请输入内容" v-model="form.introduction" maxlength="300"
-                    show-word-limit style="width: 300px;">
+                    style="width: 300px;">
                   </el-input>
                 </el-form-item>
                 <el-form-item label="价格(元/时)" prop="hourlyRate">
@@ -148,7 +154,7 @@
           </el-table>
 
           <el-pagination background layout="total, prev, pager, next" :total="total" :current-page.sync="currentPage"
-            @current-change="handleCurrentChange" style="position: absolute; right: 20px; margin-top: 20px;">
+            @current-change="handleCurrentChange" style="position: absolute; right: 150px; margin-top: 20px;">
           </el-pagination>
         </el-main>
       </el-container>

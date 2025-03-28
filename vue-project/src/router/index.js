@@ -5,6 +5,11 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path: '/test',
+  //   name: 'test',
+  //   component: () => import('../views/Element/TestView.html')
+  // },
   {
     path: '/worker',
     name: 'worker',
@@ -37,7 +42,7 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/worker'
+    redirect: '/home'
   },
 ]
 

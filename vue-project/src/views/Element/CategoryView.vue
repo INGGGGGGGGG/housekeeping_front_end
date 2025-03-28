@@ -80,7 +80,7 @@
           </el-table>
 
           <el-pagination background layout="total, prev, pager, next" :total="total" :current-page.sync="currentPage"
-            @current-change="handleCurrentChange" style="position: absolute; right: 20px; margin-top: 20px;">
+            @current-change="handleCurrentChange" style="position: absolute; right: 150px; margin-top: 20px;">
           </el-pagination>
         </el-main>
       </el-container>

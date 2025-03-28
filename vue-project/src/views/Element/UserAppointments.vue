@@ -43,7 +43,13 @@
               </div>
             </div>
             <div style="padding-top: 6px; padding-left: 6px; display: flex; position: relative;">
-              <el-link type="primary" style="margin-top: 6px;">商品详情</el-link>
+              <el-link type="primary" style="margin-top: 6px;" @click="handleRedirect(order.staffId)">
+                <!-- <router-link :to="{ name: 'detail', params: { id: order.staffId } }"
+                  style="text-decoration: none; color: #409EFF;">
+                  商品详情
+                </router-link> -->
+                商品详情
+              </el-link>
               <el-link type="primary" style="margin-left: 10px;margin-top: 6px;" @click="cancelOrder(order.id)"
                 v-if="order.status === 1">取消预约</el-link>
               <div style="color: #a6afbe; margin-top: 5px; position: absolute; right: 10px;">
@@ -55,7 +61,7 @@
         </div>
         <div style="height: 50px;">
           <el-pagination background layout="total, prev, pager, next" :total="total" :current-page.sync="currentPage"
-            :page-size.sync="pageSize" @current-change="handleCurrentChange" style="position: absolute; right: 20px;">
+            :page-size.sync="pageSize" @current-change="handleCurrentChange" style="position: absolute; right: 150px;">
           </el-pagination>
         </div>
       </el-main>
@@ -114,6 +120,23 @@ export default {
           console.error("请求失败", error);
         });
     },
+    handleRedirect(staffId) {
+      console.log("员工ID:", staffId);
+      axios({
+        method: "get",
+        url: `http://localhost:8080/domesticWorker/${staffId}`
+      }).then(response => {
+        // console.log(response.data.data);
+        if (response.data.data == null) {
+          this.open("商品已下架！")
+        } else {
+          this.$router.push({
+            name: 'detail',
+            params: { id: staffId }
+          });
+        }
+      })
+    },
     handleCurrentChange(val) {
       console.log("handleCurrentChange..." + val);
       this.render({ page: val })
@@ -144,6 +167,14 @@ export default {
           // 如果用户点击“取消”，不做任何操作
           console.log("取消操作");
         });
+    },
+    open(message) {
+      this.$message({
+        showClose: true,
+        message: message,
+        duration: 2500,
+        type: 'error'
+      });
     }
   },
   mounted() {
