@@ -31,6 +31,12 @@
                   服务分类
                 </router-link>
               </el-menu-item>
+
+              <el-menu-item index="2-3" style="padding-left: 0 !important; padding-right: 0 !important;">
+                <router-link to="/stats" style="color: #000;">
+                  信息统计
+                </router-link>
+              </el-menu-item>
             </el-submenu>
           </el-menu>
         </el-aside>
@@ -207,13 +213,18 @@ export default {
         }
       })
         .then(response => {
-          console.log(response.data);
-          this.$message.success("新增成功");
-          this.render();
+          console.log(response.data.data);
+          if (response.data.data) {
+            this.$message.success("新增成功");
+            this.render();
 
-          this.form = {
-            name: '',
-            status: ''
+            this.form = {
+              name: '',
+              status: ''
+            }
+          }
+          else {
+            this.$message.error("新增失败,不能存在相同的服务种类！");
           }
         })
         .catch(error => {
@@ -247,7 +258,8 @@ export default {
         }
       })
         .then(response => {
-          console.log(response.data);
+          console.log(response.data.data);
+
           this.$message.success("修改成功");
           this.render();
 
@@ -258,7 +270,7 @@ export default {
         })
         .catch(error => {
           this.$message.error("修改失败,不能存在相同的服务种类！");
-          console.error(error);
+          console.log(error);
         });
 
       this.dialogFormVisible = false;

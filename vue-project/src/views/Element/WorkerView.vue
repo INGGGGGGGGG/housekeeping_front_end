@@ -31,6 +31,12 @@
                   服务分类
                 </router-link>
               </el-menu-item>
+
+              <el-menu-item index="2-3" style="padding-left: 0 !important; padding-right: 0 !important;">
+                <router-link to="/stats" style="color: #000;">
+                  信息统计
+                </router-link>
+              </el-menu-item>
             </el-submenu>
           </el-menu>
         </el-aside>
@@ -346,6 +352,10 @@ export default {
         this.open("请选择服务种类")
         return
       }
+      if (this.form.introduction.length === 0) {
+        this.open("请输入个人简介")
+        return
+      }
       if (this.form.hourlyRate <= 0) {
         this.open("价格(元/时)应当是大于0的值")
         return
@@ -354,7 +364,7 @@ export default {
         this.open("请输入正确的电话号码")
         return
       }
-      if (this.form.age <= 0) {
+      if (this.form.age <= 0 || this.form.age >= 100) {
         this.open("请填写正确的年龄")
         return
       }
@@ -508,6 +518,10 @@ export default {
         this.open("请选择服务种类")
         return
       }
+      if (this.form.introduction.length === 0) {
+        this.open("请输入个人简介")
+        return
+      }
       if (this.form.hourlyRate <= 0) {
         this.open("价格(元/时)应当是大于0的值")
         return
@@ -516,7 +530,7 @@ export default {
         this.open("请输入正确的电话号码")
         return
       }
-      if (this.form.age <= 0) {
+      if (this.form.age <= 0 || this.form.age >= 100) {
         this.open("请填写正确的年龄")
         return
       }

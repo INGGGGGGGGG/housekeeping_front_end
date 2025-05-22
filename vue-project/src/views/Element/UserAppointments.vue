@@ -35,8 +35,18 @@
             <div style="height: 155px; margin: 0; padding-bottom: 3px; border-bottom: 1px solid #ccc; display: flex;">
               <img :src="order.staffImage"
                 style="display: block; width: 120px; height: 120px; margin-top: 17px; margin-left: 10px;">
-              <h3 style="font-size: 18px; margin-left: 10px; color: #3d3550;">{{ order.staffName }}</h3>
-              <div style="color: #fca578; margin-left: 400px; margin-top: 18px; font-size: 18px;">
+              <h3 style="font-size: 18px; margin-left: 10px; color: #3d3550; width: 80px;">{{ order.staffName }}</h3>
+              <div style="font-size: 15px; margin-left: 10px; color: #808080; width: 100px; padding-top: 18px;">
+                <div v-show="order.appointmentDate !== null">
+                  <div>预约时间：</div>
+                  <div>{{ order.appointmentDate }}</div>
+                  <div>
+                    <span v-if="order.appointmentSession === 0">上午</span>
+                    <span v-else-if="order.appointmentSession === 1">下午</span>
+                  </div>
+                </div>
+              </div>
+              <div style="color: #fca578; margin-left: 250px; margin-top: 18px; font-size: 18px;">
                 <span>¥</span>
                 <span>{{ order.hourlyRate }}</span>
                 <span>(元/小时)</span>
@@ -89,8 +99,8 @@ export default {
           "paymentMethod": "现场支付",
           "status": 1,
           "orderTime": "2025-03-13T16:10:11",
-          "updateTime": "2025-03-13T16:10:11",
-          "userId": 1
+          "appointmentDate": "2025-03-13",
+          "appointmentSession": 0
         }
       ]
     }

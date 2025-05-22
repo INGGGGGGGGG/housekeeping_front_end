@@ -41,8 +41,18 @@ const routes = [
     component: () => import('../views/Element/UserAppointments.vue')
   },
   {
+    path: '/stats',
+    name: 'stats',
+    component: () => import('../views/Element/StatsView.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Element/LoginView.vue')
+  },
+  {
     path: '/',
-    redirect: '/home'
+    redirect: '/login'
   },
 ]
 

@@ -36,7 +36,7 @@
             </el-form-item>
             <el-form-item label="个人简介" label-width="100px" prop="introduction">
               <el-input type="textarea" placeholder="请输入内容" v-model="form.introduction" maxlength="300" show-word-limit
-                style="width: 300px;">
+                style="width: 400px;">
               </el-input>
             </el-form-item>
             <el-form-item label="价格(元/时)" label-width="100px" prop="hourlyRate">
@@ -182,6 +182,10 @@ export default {
         this.open("请选择服务种类")
         return
       }
+      if (this.form.introduction.length === 0) {
+        this.open("请输入个人简介")
+        return
+      }
       if (this.form.hourlyRate <= 0) {
         this.open("价格(元/时)应当是大于0的值")
         return
@@ -190,7 +194,7 @@ export default {
         this.open("请输入正确的电话号码")
         return
       }
-      if (this.form.age <= 0) {
+      if (this.form.age <= 0 || this.form.age >= 100) {
         this.open("请填写正确的年龄")
         return
       }
