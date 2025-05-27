@@ -37,6 +37,12 @@
                   信息统计
                 </router-link>
               </el-menu-item>
+
+              <el-menu-item index="2-4" style="padding-left: 0 !important; padding-right: 0 !important;">
+                <router-link to="/order" style="color: #000;">
+                  订单跟踪
+                </router-link>
+              </el-menu-item>
             </el-submenu>
           </el-menu>
         </el-aside>
